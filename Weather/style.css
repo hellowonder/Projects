@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url('./images/jonathan-bowers-BqKdvJ8a5TI-unsplash.jpg');
+    background-size: cover;
+    background-position: top center;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.inp{
+    margin: 15px;
+    padding: 1rem;
+    width: 18rem;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+}
+input::placeholder{
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+}
+.location{
+    color: white;
+    margin: 0.8rem; 
+}
+
+.temperature{
+    color: white;
+    margin: 0.8rem;
+}
+
+.condition{
+    color: white;
+}
+
+.range{
+    color: white;
+    margin-top: 0.3rem;
+}
