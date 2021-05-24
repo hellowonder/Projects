@@ -12,7 +12,7 @@ fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistri
     // console.log(data);
     return data.json();
 }).then(parseData =>{
-    // console.log(parseData);
+    console.log(parseData);
     
     for(let listOfHospital of parseData.sessions){
         if((listOfHospital.available_capacity_dose1 > 0) || (listOfHospital.available_capacity_dose2 > 0)){
@@ -41,9 +41,13 @@ fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistri
             available_capacity_dose2.innerHTML = `Capacity Dose2: ${listOfHospital.available_capacity_dose2}`
             ul.append(available_capacity_dose2)
 
-            let avilable_capacity = document.createElement('p')
-            avilable_capacity.innerHTML = `No of Avilable Shots: ${listOfHospital.avilable_capacity}`
-            ul.append(avilable_capacity)
+            let available_capacity = document.createElement('p')
+            available_capacity.innerHTML = `No of Avilable Shots: ${listOfHospital.available_capacity}`
+            ul.append(available_capacity)
+
+            let fee = document.createElement('p')
+            fee.innerHTML = `Fee Type: ${listOfHospital.fee_type}`
+            ul.append(fee)
 
             let min_age_limit = document.createElement('p')
             min_age_limit.innerHTML = `Minimum Age Limit: ${listOfHospital.min_age_limit}`
