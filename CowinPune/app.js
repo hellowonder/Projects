@@ -5,16 +5,11 @@ var dd = String(today.getDate());
 var mm = String(today.getMonth() + 1) //January is 0!
 var yyyy = today.getFullYear();
 
+const getVaccineSlotInfo = async() => {
+    const url = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=363&date=${dd}-${mm}-${yyyy}`;
+    const fetchedData = await axios.get(url);
 
-
-fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=363&date=${dd}-${mm}-${yyyy}`)
-.then(data => {
-    // console.log(data);
-    return data.json();
-}).then(parseData =>{
-    console.log(parseData);
-    
-    for(let listOfHospital of parseData.sessions){
+    for(let listOfHospital of fetchedData.data.sessions){
         if((listOfHospital.available_capacity_dose1 > 0) || (listOfHospital.available_capacity_dose2 > 0)){
 
             let name = document.createElement('p')
@@ -60,13 +55,13 @@ fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistri
             let hr =  document.createElement('hr')
             slots.append(hr)
 
+            console.log(listOfHospital)
+
         }
 
         // console.log(listOfHospital)
     }
-}).catch(err => {
-    console.log("Error");
-    console.log(err);
-})
 
+}
 
+getVaccineSlotInfo()
